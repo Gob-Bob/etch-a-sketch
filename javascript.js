@@ -1,14 +1,17 @@
 const body = document.querySelector('body');
-const gridContiner = document.createElement('continer');
-gridContiner.classList.add('grid');
-body.appendChild(gridContiner)
+const container = document.createElement('div');
+container.classList.add('container');
 
-function createGridBlock(amount) {
-    for (let i = 0; i < amount; i++) {
-        const gridBlock = document.createElement('div');
-        gridBlock.textContent = '[ ]';
-        body.appendChild(gridBlock);
-    }
-}
+body.appendChild(container)
 
-createGridBlock(16);
+function makeRows(rows, cols) {
+  container.style.setProperty('--grid-rows', rows);
+  container.style.setProperty('--grid-cols', cols);
+  for (c = 0; c < (rows * cols); c++) {
+    let cell = document.createElement("div");
+    cell.innerText = (c + 1);
+    container.appendChild(cell).className = "grid-item";
+  };
+};
+
+makeRows(16, 16);
