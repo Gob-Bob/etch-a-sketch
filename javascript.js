@@ -3,18 +3,28 @@ const container = document.createElement('div');
 container.classList.add('container');
 body.appendChild(container)
 
-const object = document.createElement('div');
-object.classList.add('object');
 
-object.style.border = 'medium solid black';
-object.style.width = '100px';
-object.style.height = '100px';
 
-function turnBlue() {
-    object.style.backgroundColor = 'blue';
+function createBox(boxNum) {
+    for (let i = 0; i < boxNum; i++) {
+        const object = document.createElement('div');
+        object.classList.add('object');
+
+        object.style.border = 'medium solid black';
+        object.style.width = '100px';
+        object.style.height = '100px';
+
+        container.appendChild(object);
+    }
 }
 
-object.addEventListener('mouseover', turnBlue);
+createBox(16);
 
-container.appendChild(object);
+function turnBlue() {
+    this.style.backgroundColor = 'blue';
+}
 
+const boxNodeList = document.querySelectorAll('.object');
+boxNodeList.forEach(item => {
+    item.addEventListener('mouseover', turnBlue)
+});
