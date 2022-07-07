@@ -11,40 +11,18 @@ container.style.display = 'grid';
 container.style.gridTemplateColumns = 'repeat(16, 40px)';
 container.style.gridTemplateRows = 'repeat(16, 40px)';
 
+function turnBlue() {
+    this.style.backgroundColor = 'blue';
+}
+
 function addDivs(amount) {
     for (let i = 0; i < amount; i++) {
         const div = document.createElement('div');
         div.style.border = 'medium solid black';
-        // div.textContent = 'DIV';
+        div.addEventListener('mouseover', turnBlue);
         container.appendChild(div);
     }
 }
 addDivs(256);
 
 body.appendChild(container);
-
-// function createBox(row, column) {
-//     for (let i = 0; i < column; i++) {
-//         for (let j = 0; j < row; j++) {
-//             const object = document.createElement('div');
-//             object.classList.add('object');
-
-//             object.style.border = 'medium solid black';
-//             object.style.width = '100px';
-//             object.style.height = '100px';
-
-//             container.appendChild(object);
-//         }
-//     }
-// }
-
-// createBox(2, 2);
-
-// function turnBlue() {
-//     this.style.backgroundColor = 'blue';
-// }
-
-// const boxNodeList = document.querySelectorAll('.object');
-// boxNodeList.forEach(item => {
-//     item.addEventListener('mouseover', turnBlue)
-// });
