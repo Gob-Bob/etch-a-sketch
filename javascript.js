@@ -1,15 +1,12 @@
 const body = document.querySelector('body');
-const container = document.createElement('div');
-
 body.style.display = 'flex';
 body.style.justifyContent = 'center';
 body.style.alignContent = 'center';
 
+const container = document.createElement('div');
 container.classList.add('container');
 container.style.border = 'medium solid black'
 container.style.display = 'grid';
-container.style.gridTemplateColumns = 'repeat(16, 40px)';
-container.style.gridTemplateRows = 'repeat(16, 40px)';
 
 function turnBlue() {
     this.style.backgroundColor = 'blue';
@@ -23,6 +20,16 @@ function addDivs(amount) {
         container.appendChild(div);
     }
 }
-addDivs(256);
 
-body.appendChild(container);
+function gridSize(size) {
+    container.style.gridTemplateColumns = `repeat(${size}, 40px)`;
+    container.style.gridTemplateRows = `repeat(${size}, 40px)`;
+    addDivs(size * size);
+    body.appendChild(container);
+}
+
+let userInput = prompt("Please enter grid size (100 max):");
+while (userInput > 100) {
+    userInput = prompt("Please enter grid size (100 max):");
+}
+gridSize(userInput);
